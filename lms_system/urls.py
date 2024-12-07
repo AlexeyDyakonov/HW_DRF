@@ -17,7 +17,7 @@ urlpatterns = [
          name="lesson_list"
          ),
     path(
-        "lessons/<int:pk>/retrieve/",
+        "lessons/<int:pk>/",
         LessonRetrieveApiView.as_view(),
         name="lesson_retrieve",
     ),
