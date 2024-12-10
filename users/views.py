@@ -42,7 +42,7 @@ class PaymentViewSet(ModelViewSet):
     ]
     ordering_fields = (
         "date",
-        "cost",
+        "amount",
     )
     search_fields = ("method",)
     filterset_fields = (
