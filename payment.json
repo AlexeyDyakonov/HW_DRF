@@ -1,5 +1,31 @@
 [
   {
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+      "action_time": "2024-12-14T10:17:54.881Z",
+      "user": 4,
+      "content_type": 3,
+      "object_id": "1",
+      "object_repr": "moders",
+      "action_flag": 1,
+      "change_message": "[{\"added\": {}}]"
+    }
+  },
+  {
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+      "action_time": "2024-12-14T10:18:35.656Z",
+      "user": 4,
+      "content_type": 6,
+      "object_id": "3",
+      "object_repr": "123@gmail.com",
+      "action_flag": 2,
+      "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+    }
+  },
+  {
     "model": "auth.permission",
     "pk": 1,
     "fields": {
@@ -324,6 +350,14 @@
     }
   },
   {
+    "model": "auth.group",
+    "pk": 1,
+    "fields": {
+      "name": "moders",
+      "permissions": []
+    }
+  },
+  {
     "model": "contenttypes.contenttype",
     "pk": 1,
     "fields": {
@@ -396,6 +430,14 @@
     }
   },
   {
+    "model": "sessions.session",
+    "pk": "opz1eszx49o9o3lsnpr5spqdjhfq187q",
+    "fields": {
+      "session_data": ".eJxVjEEOwiAQRe_C2hBgCkNduvcMZAqDVA0kpV0Z765NutDtf-_9lwi0rSVsnZcwJ3EWgzj9bhPFB9cdpDvVW5Ox1XWZJ7kr8qBdXlvi5-Vw_w4K9fKtHQAk55NS1lLWg0UbCVUizsprRvSawKgxG3baRDUiGAQHXlvLGlG8P7yfNlM:1tMPBm:Ni_CghhwNcvW-yMK54LitDBupohryfCYBBjDuX730ZY",
+      "expire_date": "2024-12-28T10:15:58.779Z"
+    }
+  },
+  {
     "model": "users.user",
     "pk": 1,
     "fields": {
@@ -428,6 +470,48 @@
       "is_active": true,
       "date_joined": "2024-12-07T15:37:17.004Z",
       "email": "dyakonov261@gmail.com",
+      "phone": null,
+      "city": null,
+      "avatar": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$870000$0kFU4D8RpD3LheBxWNTLfA$Ye5J4itY7bwc9g3vO4uzQjXMA1ynGJauPNmNHX61aCk=",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-12-14T08:44:25Z",
+      "email": "123@gmail.com",
+      "phone": null,
+      "city": null,
+      "avatar": "",
+      "groups": [
+        1
+      ],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$870000$SgzCwUw7U6QUcQJwcpFWui$6cXxkbo1vLCmPhuEiSrSY8+7jdCEq5XS7/8KxMk/u2s=",
+      "last_login": "2024-12-14T10:15:58.777Z",
+      "is_superuser": true,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2024-12-14T10:15:52.692Z",
+      "email": "alexey",
       "phone": null,
       "city": null,
       "avatar": "",
@@ -511,7 +595,8 @@
       "description": "Бэкэенд язsк программирования",
       "preview": "",
       "video_url": null,
-      "course": 7
+      "course": 7,
+      "owner": null
     }
   },
   {
@@ -522,7 +607,8 @@
       "description": "Очень сложный язык",
       "preview": "",
       "video_url": null,
-      "course": 6
+      "course": 6,
+      "owner": null
     }
   },
   {
@@ -533,7 +619,8 @@
       "description": null,
       "preview": "",
       "video_url": null,
-      "course": 7
+      "course": 7,
+      "owner": null
     }
   }
 ]

@@ -1,6 +1,7 @@
 from django.contrib import admin
+
 from lms_system.models import Course, Lesson
-from users.models import User, Payment
+from users.models import Payment, User
 
 
 @admin.register(Course)
@@ -40,7 +41,10 @@ class UserAdmin(admin.ModelAdmin):
         "city",
         "avatar",
     )
-    list_display = ("email",)
+    list_display = (
+        "id",
+        "email",
+    )
 
 
 @admin.register(Payment)
