@@ -20,9 +20,7 @@ class Course(models.Model):
         help_text="Загрузите превью курса"
     )
     description = models.TextField(
-        verbose_name="Описание курса",
-        **NULLABLE,
-        help_text="Введите описание курса"
+        verbose_name="Описание курса", **NULLABLE, help_text="Введите описание курса"
     )
     owner = models.ForeignKey(
         User,
@@ -49,9 +47,7 @@ class Lesson(models.Model):
         help_text="Введите название урока",
     )
     description = models.TextField(
-        verbose_name="Описание урока",
-        **NULLABLE,
-        help_text="Введите описание урока"
+        verbose_name="Описание урока", **NULLABLE, help_text="Введите описание урока"
     )
     preview = models.ImageField(
         upload_to="lessons_previews/",
@@ -60,9 +56,7 @@ class Lesson(models.Model):
         help_text="Загрузите превью урока"
     )
     video_url = models.URLField(
-        verbose_name="Видеоурок",
-        **NULLABLE,
-        help_text="ссылка на видео"
+        verbose_name="Видеоурок", **NULLABLE, help_text="ссылка на видео"
     )
     course = models.ForeignKey(
         Course,
@@ -70,6 +64,13 @@ class Lesson(models.Model):
         verbose_name="Курс",
         related_name="lessons",
         **NULLABLE
+    )
+    owner = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        **NULLABLE,
+        verbose_name="Владелец",
+        related_name="lesson"
     )
 
     def __str__(self):
