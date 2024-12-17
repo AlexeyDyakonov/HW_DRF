@@ -13,7 +13,6 @@ from users.permissions import IsModer, IsOwner
 class CourseViewSet(ModelViewSet):
     queryset = Course.objects.all()
 
-    # serializer_class = CourseSerializer
 
     def get_serializer_class(self):
         if self.action == "retrieve":
@@ -39,6 +38,7 @@ class CourseViewSet(ModelViewSet):
 class LessonCreateApiView(CreateAPIView):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
+    permission_classes = [IsAuthenticated, ~IsModer]
 
     def perform_create(self, serializer):
         """Функция автоматического сохранения владельца."""

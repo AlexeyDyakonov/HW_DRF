@@ -22,6 +22,7 @@ class CourseAdmin(admin.ModelAdmin):
 @admin.register(Lesson)
 class LessonAdmin(admin.ModelAdmin):
     search_fields = (
+        "id",
         "name",
         "preview",
         "description",
