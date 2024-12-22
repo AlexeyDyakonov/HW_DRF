@@ -40,6 +40,12 @@ class CourseDetailSerializer(ModelSerializer):
     def get_lessons_count(self, course):
         return Lesson.objects.filter(course=course).count()
 
+    def get_subscription(self, course):
+        request = self.context.get("request")
+        if not request.user.is_authenticated:
+            return False
+        return Subscription.objects.filter(user=request.user, course=course).exists()
+
     class Meta:
         model = Course
         fields = "__all__"
