@@ -20,6 +20,12 @@ class CourseSerializer(ModelSerializer):
     lessons = LessonSerializer(many=True, read_only=True)
     subscription = SerializerMethodField()
 
+    def get_subscription(self, course):
+        request = self.context.get("request")
+        if not request.user.is_authenticated:
+            return False
+        return Subscription.objects.filter(user=request.user, course=course).exists()
+
     class Meta:
         model = Course
         fields = "__all__"
@@ -37,14 +43,14 @@ class CourseDetailSerializer(ModelSerializer):
     lessons = LessonSerializer(many=True, read_only=True)
     subscription = SerializerMethodField()
 
-    def get_lessons_count(self, course):
-        return Lesson.objects.filter(course=course).count()
-
     def get_subscription(self, course):
         request = self.context.get("request")
         if not request.user.is_authenticated:
             return False
         return Subscription.objects.filter(user=request.user, course=course).exists()
+
+    def get_lessons_count(self, course):
+        return Lesson.objects.filter(course=course).count()
 
     class Meta:
         model = Course
