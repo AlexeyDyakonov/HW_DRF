@@ -47,7 +47,10 @@ class Payment(models.Model):
         verbose_name="Кто произвел оплату",
         related_name="payment",
     )
-    date = models.DateField(verbose_name="Дата оплаты", **NULLABLE)
+    date = models.DateField(
+        verbose_name="Дата оплаты",
+        **NULLABLE
+    )
     course = models.ForeignKey(
         "lms_system.Course",
         on_delete=models.CASCADE,
@@ -60,12 +63,27 @@ class Payment(models.Model):
         verbose_name="Оплаченный урок",
         related_name="payment",
     )
-    amount = models.PositiveIntegerField(default=0, verbose_name="Сумма оплаты")
+    amount = models.PositiveIntegerField(
+        default=0,
+        verbose_name="Сумма оплаты"
+    )
     CASH = "cash"
     TRANSFER = "transfer"
     PAYMENT_METHOD = [(CASH, "cash"), (TRANSFER, "transfer")]
     method = models.CharField(
         choices=PAYMENT_METHOD, default=CASH, verbose_name="Способ оплаты"
+    )
+    session_id = models.CharField(
+        max_length=255,
+        verbose_name='Id сессии',
+        **NULLABLE,
+        help_text="Укажите ID сессии Stripe",
+    )
+    link = models.URLField(
+        max_length=400,
+        verbose_name='Cсылка на оплату',
+        **NULLABLE,
+        help_text="Укажите ссылку на оплату",
     )
 
     def __str__(self):
