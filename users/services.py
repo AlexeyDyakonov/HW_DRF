@@ -8,7 +8,7 @@ stripe.api_key = STRIPE_API_KEY
 
 def create_stripe_price(amount, product_id):
     """Создает цену в Stripe."""
-    stripe.Price.create(
+    return stripe.Price.create(
         currency="RUB",
         unit_amount=amount * 100,
         product_data={"name": product_id},
