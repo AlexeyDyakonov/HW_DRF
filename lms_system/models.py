@@ -99,6 +99,10 @@ class Subscription(models.Model):
         verbose_name="Пользователь",
         related_name="subscription",
     )
+    sign_up = models.BooleanField(
+        default=False,
+        verbose_name="Подписка"
+    )
 
     def __str__(self):
         return self.course

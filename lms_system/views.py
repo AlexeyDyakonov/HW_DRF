@@ -11,6 +11,7 @@ from lms_system.serializers import (CourseDetailSerializer, CourseSerializer,
                                     LessonSerializer, SubscriptionSerializer)
 from users.permissions import IsModer, IsOwner
 from django.shortcuts import get_object_or_404
+from lms_system.tasks import mailing_update_course
 
 
 class CourseViewSet(ModelViewSet):
@@ -37,6 +38,11 @@ class CourseViewSet(ModelViewSet):
         course = serializer.save()
         course.owner = self.request.user
         course.save()
+
+    def perform_update(self, serializer):
+        serializer.save()
+        course_pk = self.get_object().pk
+        mailing_update_course.delay(course_pk)
 
 
 class LessonCreateApiView(CreateAPIView):
